@@ -58,16 +58,15 @@ class ActivitiesList extends Component {
   render() {
     // check if there's any activities in the state
     let activities = [...this.props.activities];
-    return activities.length >= 1 ? (
-      // if yes => display them
-      <ul>
+    return activities.length >= 1 ? ( // if yes => display them
+      <ul id="ActivitiesList">
         <DisplayActivitiesList
           activities={this.props.activities}
           removeActivity={this.props.removeActivity}
         />
       </ul>
     ) : (
-      <div>No planned activities yet.</div>
+      <div id="ActivitiesList">No planned activities yet.</div>
     );
   }
 }

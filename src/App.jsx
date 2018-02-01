@@ -32,11 +32,12 @@ class App extends Component {
     return (
       <div>
         <Header headerText={this.state.headerText} />
+
+        <InputForm
+          addActivity={this.addActivity}
+          activities={this.state.activities}
+        />
         <div className="flex-container">
-          <InputForm
-            addActivity={this.addActivity}
-            activities={this.state.activities}
-          />
           <ActivitiesList
             activities={this.state.activities}
             removeActivity={this.removeActivity}

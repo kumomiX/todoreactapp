@@ -7,28 +7,61 @@ $elem-width: 70%
   align-items: center
   flex-direction: column
   width: 90%
+  
 
-.InputForm 
-  width: 100%
-  margin: 10px auto 15px auto
+#InputForm 
+  background: white
+  border: 3px solid black
+  width: 90%
+  padding: 10px 0
+  margin-top: 50px
+
 
 .elem 
   width: $elem-width
-  padding: 10px
+  padding: 15px
   margin: 10px
+  border-radius: 5px
+  border: 2px solid black
+  outline: none
+
+  &:focus 
+    border: 2px solid red
+
+  &.submit 
+    background: rgba(255,0,0,0.6)
+    border: 2px solid black
+    cursor: pointer
+    color: white
+    font-size: 12pt
+    box-shadow: 0px 15px 10px -10px rgba(0,0,0,0.3)
+    transition: all 200ms cubic-bezier(0.25, 0.39, 0.39, 2.01)
+    &:hover
+      transform: scale(1.05)
+
 
 .warning 
   background: rgba(255,0,0,0.6) 
 
-ul 
-  list-style: none
+#ActivitiesList 
+  margin-top: 50px
+  background: white
+  border: 3px solid black
   width: 100%
+  text-align: center
+  padding: 10px
+
+ul#ActivitiesList  
+  list-style: none
   text-align: left
   overflow: hidden
+ 
   
 li 
+  border-radius: 8px
+  border: 1px solid black
   cursor: pointer
-  margin: 10px 15%
+  margin: 10px calc((100% - #{$elem-width}) / 2)
   background: white
   transition: all 300ms ease-in-out
   padding: 10px

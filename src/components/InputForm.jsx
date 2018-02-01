@@ -10,7 +10,7 @@ class SubmitButton extends Component {
   render() {
     return (
       <button type="submit" className="elem submit">
-        Submit
+        CONFIRM
       </button>
     );
   }
@@ -18,7 +18,14 @@ class SubmitButton extends Component {
 
 class InputBar extends Component {
   render() {
-    return <input type="text" className="elem bar" name="InputBar" />;
+    return (
+      <input
+        type="text"
+        className="elem bar"
+        name="InputBar"
+        placeholder="Some kind of activity..."
+      />
+    );
   }
 }
 
@@ -54,12 +61,20 @@ class InputForm extends Component {
 
   render() {
     return this.state.legit ? (
-      <form onSubmit={this.handleSubmit} className="InputForm flex-container ">
+      <form
+        onSubmit={this.handleSubmit}
+        id="InputForm"
+        className="flex-container"
+      >
         <InputBar />
         <SubmitButton />
       </form>
     ) : (
-      <form onSubmit={this.handleSubmit} className="InputForm flex-container ">
+      <form
+        onSubmit={this.handleSubmit}
+        id="InputForm "
+        className="flex-container"
+      >
         <InputBar />
         <Denied />
       </form>

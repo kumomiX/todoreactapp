@@ -1,0 +1,62 @@
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0 auto;
+  padding: 0;
+  font-family: 'Open Sans', Arial, sans-serif; }
+
+.flex-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  width: 90%; }
+
+.InputForm {
+  width: 100%;
+  margin: 10px auto 15px auto; }
+
+.elem {
+  width: 70%;
+  padding: 10px;
+  margin: 10px; }
+
+.warning {
+  background: rgba(255, 0, 0, 0.6); }
+
+ul {
+  list-style: none;
+  width: 100%;
+  text-align: left;
+  overflow: hidden; }
+
+li {
+  cursor: pointer;
+  margin: 10px 15%;
+  background: white;
+  transition: all 300ms ease-in-out;
+  padding: 10px;
+  opacity: 0;
+  transform: translateX(140%); }
+  li:hover {
+    color: white;
+    background: rgba(255, 0, 0, 0.6); }
+    li:hover::after {
+      float: right;
+      content: '\02E3';
+      margin-right: 10px; }
+  li.slide-in {
+    transform: translateX(0%);
+    opacity: 1; }
+  li.toRemove {
+    transform: translateX(calc(-70% * 2));
+    opacity: 0; }
+
+h1 {
+  text-align: center;
+  padding: 20px;
+  background: red;
+  display: block;
+  width: 100%;
+  color: white; }

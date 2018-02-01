@@ -1,0 +1,25 @@
+{
+  "name": "todolist",
+  "version": "0.1.0",
+  "private": true,
+  "dependencies": {
+    "npm-run-all": "^4.1.2",
+    "react": "^16.2.0",
+    "react-dom": "^16.2.0",
+    "react-scripts": "1.1.0"
+  },
+  "scripts": {
+    "sass-build": "node-sass-chokidar src/styles/sass -o src/styles/css",
+    "sass-watch":
+      "node-sass-chokidar src/styles/sass -o src/styles/css --indented-syntax --watch",
+    "start-js": "react-scripts start",
+    "build-js": "react-scripts build",
+    "start": "npm-run-all -p sass-watch start-js",
+    "build": "npm-run-all -p sass-build build-js",
+    "test": "react-scripts test --env=jsdom",
+    "eject": "react-scripts eject"
+  },
+  "devDependencies": {
+    "node-sass-chokidar": "0.0.3"
+  }
+}

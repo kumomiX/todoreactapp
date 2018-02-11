@@ -1,12 +1,10 @@
-import React, { Component } from 'react';
+import React from 'react'
 
-export default class Header extends Component {
-  render() {
-    return (
-      <h1>
-        Any plans for today?<br />
-        Or maybe tomorrow?
-      </h1>
-    );
-  }
-}
+const Header = () => (
+  <h1>
+    Any plans for today?<br />
+    Or rather tomorrow?
+  </h1>
+)
+
+export default Header

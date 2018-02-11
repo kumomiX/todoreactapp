@@ -1,74 +1,41 @@
-import React, { Component } from 'react';
+import React from 'react'
+import ClearStorage from './ClearStorage'
+import Activity from './Activity'
 
-class Activity extends Component {
-  constructor(props) {
-    super(props);
+const DisplayActivitiesList = ({ activities, removeActivity, editActivity }) =>
+  activities
+    .reverse()
+    .map(activity => (
+      <Activity
+        txt={activity}
+        key={activity}
+        removeActivity={removeActivity}
+        editActivity={editActivity}
+      />
+    ))
 
-    this.state = {
-      class: ''
-    };
-
-    this.element = <li onClick={this.handleClick}>{this.props.txt}</li>;
-    this.handleClick = this.handleClick.bind(this);
-  }
-
-  handleClick(e) {
-    // remove activity on click
-    let target = e.target;
-    e.target.classList.add('toRemove');
-    setTimeout(() => {
-      this.props.removeActivity(target.innerHTML);
-    }, 300);
-  }
-
-  componentDidMount() {
-    // needed for slide-in animation
-    setTimeout(() => {
-      this.setState({ class: 'slide-in' });
-    }, 60);
-  }
-
-  render() {
-    let element = (
-      <li onClick={this.handleClick} className={this.state.class}>
-        {this.props.txt}
-      </li>
-    );
-
-    return element;
-  }
+const ActivitiesList = ({
+  activities,
+  clearActivities,
+  removeActivity,
+  editActivity
+}) => {
+  // check if there's any activities in the state
+  return activities.length >= 1 ? ( // if yes => display them
+    <ul id="ActivitiesList">
+      <ClearStorage
+        storageItem={'activities'}
+        clearActivities={clearActivities}
+      />
+      <DisplayActivitiesList
+        activities={activities}
+        removeActivity={removeActivity}
+        editActivity={editActivity}
+      />
+    </ul>
+  ) : (
+    <div id="ActivitiesList">No planned activities yet.</div>
+  )
 }
 
-class DisplayActivitiesList extends Component {
-  render() {
-    let newList = [...this.props.activities]
-      .reverse()
-      .map((activity, ind) => (
-        <Activity
-          txt={activity}
-          key={activity}
-          removeActivity={this.props.removeActivity}
-        />
-      ));
-    return newList;
-  }
-}
-
-class ActivitiesList extends Component {
-  render() {
-    // check if there's any activities in the state
-    let activities = [...this.props.activities];
-    return activities.length >= 1 ? ( // if yes => display them
-      <ul id="ActivitiesList">
-        <DisplayActivitiesList
-          activities={this.props.activities}
-          removeActivity={this.props.removeActivity}
-        />
-      </ul>
-    ) : (
-      <div id="ActivitiesList">No planned activities yet.</div>
-    );
-  }
-}
-
-export default ActivitiesList;
+export default ActivitiesList

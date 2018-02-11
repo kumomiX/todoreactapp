@@ -1,85 +1,46 @@
-import React, { Component } from 'react';
-
-class Denied extends Component {
-  render() {
-    return <div className="elem warning">You've already planned this</div>;
-  }
-}
-
-class SubmitButton extends Component {
-  render() {
-    return (
-      <button type="submit" className="elem submit">
-        CONFIRM
-      </button>
-    );
-  }
-}
-
-class InputBar extends Component {
-  render() {
-    return (
-      <input
-        type="text"
-        className="elem bar"
-        name="InputBar"
-        placeholder="Some kind of activity..."
-      />
-    );
-  }
-}
+import React, { Component } from 'react'
+import { Denied, SubmitButton, InputBar } from './InputFormElements'
 
 // form for adding new activities
 class InputForm extends Component {
   constructor(props) {
-    super(props);
+    super(props)
     this.state = {
       legit: true
-    };
-    this.handleSubmit = this.handleSubmit.bind(this);
+    }
   }
 
   // add activity on submit
-  handleSubmit(e) {
-    e.preventDefault();
-    let inputValue = e.target.InputBar.value;
+  handleSubmit = e => {
+    e.preventDefault()
+    let inputValue = e.target.InputBar.value
 
     // if input is empty
-    if (inputValue.length < 1) return;
+    if (inputValue.length < 1) return
     //if user has already planned this => warn him
     if (this.props.activities.includes(inputValue)) {
-      this.setState({ legit: false });
+      this.setState({ legit: false })
       setTimeout(() => {
-        this.setState({ legit: true });
-      }, 700);
+        this.setState({ legit: true })
+      }, 700)
     } else {
-      this.setState({ legit: true });
-      this.props.addActivity(inputValue);
-      e.target.InputBar.value = '';
+      this.props.addActivity(inputValue)
+      e.target.InputBar.value = ''
     }
   }
 
   render() {
-    return this.state.legit ? (
+    return (
       <form
         onSubmit={this.handleSubmit}
         id="InputForm"
         className="flex-container"
       >
         <InputBar />
-        <SubmitButton />
+        {this.state.legit ? <SubmitButton /> : <Denied />}
       </form>
-    ) : (
-      <form
-        onSubmit={this.handleSubmit}
-        id="InputForm "
-        className="flex-container"
-      >
-        <InputBar />
-        <Denied />
-      </form>
-    );
+    )
   }
 }
 
-export default InputForm;
+export default InputForm

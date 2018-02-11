@@ -8,10 +8,7 @@
 
 body {
   background: #eee;
-  border: 4px solid black;
-  width: 80vh;
-  height: 97vh;
-  margin-top: 1.5vh; }
+  width: calc(100vw - (100vw - 100%)); }
 
 .flex-container {
   display: flex;
@@ -20,22 +17,41 @@ body {
   flex-direction: column;
   width: 90%; }
 
+.hover-show {
+  cursor: pointer;
+  display: inline-block; }
+
+.hover-hidden {
+  display: none; }
+
+*:hover > .hover-show {
+  display: none; }
+
+*:hover > .hover-hidden {
+  cursor: pointer;
+  display: inline-block; }
+
 #InputForm {
   background: white;
-  border: 3px solid black;
+  border: 3px solid #444;
+  border-radius: 5px;
   width: 90%;
   padding: 10px 0;
-  margin-top: 50px; }
+  margin-top: 50px;
+  max-width: 750px; }
 
 .elem {
   width: 70%;
-  padding: 15px;
+  padding: 10px;
   margin: 10px;
   border-radius: 5px;
-  border: 2px solid black;
-  outline: none; }
+  border: 0;
+  outline: none;
+  font-size: 16px;
+  box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.16), 0 0 0 1px rgba(0, 0, 0, 0.08);
+  transition: box-shadow 200ms cubic-bezier(0.4, 0, 0.2, 1); }
   .elem:focus {
-    border: 2px solid red; }
+    box-shadow: 0 3px 8px 0 rgba(0, 0, 0, 0.2), 0 0 0 1px rgba(0, 0, 0, 0.08); }
   .elem.submit {
     background: rgba(255, 0, 0, 0.6);
     border: 2px solid black;
@@ -45,53 +61,107 @@ body {
     box-shadow: 0px 15px 10px -10px rgba(0, 0, 0, 0.3);
     transition: all 200ms cubic-bezier(0.25, 0.39, 0.39, 2.01); }
     .elem.submit:hover {
-      transform: scale(1.05); }
-
-.warning {
-  background: rgba(255, 0, 0, 0.6); }
+      transform: scale(1.05);
+      box-shadow: 0px 25px 15px -15px rgba(0, 0, 0, 0.3); }
+  .elem.warning {
+    background: rgba(255, 0, 0, 0.8);
+    color: white;
+    text-align: center;
+    border: 2px solid black;
+    box-shadow: 0px 15px 10px -10px rgba(0, 0, 0, 0.3); }
 
 #ActivitiesList {
-  margin-top: 50px;
+  margin: 50px auto;
   background: white;
-  border: 3px solid black;
-  width: 100%;
+  border: 3px solid #444;
+  border-radius: 5px;
+  width: 90%;
   text-align: center;
-  padding: 10px; }
+  padding: 10px;
+  position: relative;
+  list-style: none;
+  text-align: center;
+  overflow: hidden;
+  max-width: 750px; }
 
 ul#ActivitiesList {
-  list-style: none;
-  text-align: left;
-  overflow: hidden; }
+  text-align: left; }
+
+#clearActivites {
+  position: absolute;
+  right: 20px;
+  top: 20px;
+  font-size: 20px;
+  background: none;
+  border: none; }
 
 li {
   border-radius: 8px;
-  border: 1px solid black;
+  border: 0;
+  color: #555;
   cursor: pointer;
   margin: 10px calc((100% - 70%) / 2);
   background: white;
-  transition: all 300ms ease-in-out;
   padding: 10px;
+  position: relative;
   opacity: 0;
-  transform: translateX(140%); }
+  transform: translateX(140%);
+  transition: all 200ms cubic-bezier(0.4, 0, 0.2, 1);
+  box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.16), 0 0 0 1px rgba(0, 0, 0, 0.08); }
   li:hover {
     color: white;
     background: rgba(255, 0, 0, 0.6); }
-    li:hover::after {
-      float: right;
-      content: '\02E3';
-      margin-right: 10px; }
   li.slide-in {
     transform: translateX(0%);
     opacity: 1; }
-  li.toRemove {
+  li.slide-out {
     transform: translateX(calc(-70% * 2));
     opacity: 0; }
+  li .activity {
+    display: block; }
+
+.edit-button {
+  position: absolute;
+  font-size: 12pt;
+  border: none;
+  background: black;
+  color: white;
+  height: 100%;
+  top: 0;
+  right: 0;
+  border-radius: 0 7px 7px 0;
+  padding: 10px;
+  padding-right: 8px;
+  cursor: pointer;
+  outline: none; }
+  .edit-button:hover {
+    color: #ff4d4d; }
+
+.textareaContainer {
+  margin: 10px calc((100% - 70%) / 2);
+  position: relative;
+  width: 70%; }
+
+textarea {
+  resize: none;
+  width: 100%;
+  outline: none;
+  background: white;
+  padding: 10px;
+  border-radius: 8px;
+  border: 0;
+  font-size: 12pt;
+  display: block;
+  box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.16), 0 0 0 1px rgba(0, 0, 0, 0.08);
+  transition: box-shadow 200ms cubic-bezier(0.4, 0, 0.2, 1); }
+  textarea:focus {
+    border: 0;
+    box-shadow: 0 3px 8px 0 rgba(0, 0, 0, 0.2), 0 0 0 1px rgba(0, 0, 0, 0.08); }
 
 h1 {
   text-align: center;
-  padding: 40px;
+  padding: 5%;
   background: black;
   display: block;
-  width: 100%;
-  border: 3% solid black;
+  font-size: 2em;
   color: white; }

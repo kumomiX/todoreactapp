@@ -1,8 +1,7 @@
 h1 {
   text-align: center;
-  padding: 40px;
+  padding: 5%;
   background: black;
   display: block;
-  width: 100%;
-  border: 3% solid black;
+  font-size: 2em;
   color: white; }
